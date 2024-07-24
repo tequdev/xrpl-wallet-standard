@@ -1,0 +1,18 @@
+{
+  "name": "@xrpl-wallet-standard/app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "scripts": {
+    "build": "pkgroll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wallet-standard/react": "0.1.4",
+    "@xrpl-wallet-standard/core": "workspace:*"
+  }
+}
