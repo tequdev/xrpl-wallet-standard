@@ -11,7 +11,7 @@ export type XRPLSignAndSubmitTransactionFeature = {
 }
 
 export type XRPLSignAndSubmitTransactionMethod = (
-  ...input: XRPLSignAndSubmitTransactionInput[]
+  input: XRPLSignAndSubmitTransactionInput
 ) => Promise<SignAndSubmitTransactionOutput>
 
 export interface XRPLSignAndSubmitTransactionInput {

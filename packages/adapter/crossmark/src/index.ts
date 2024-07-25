@@ -176,7 +176,7 @@ export class CrossmarkWallet implements XRPLBaseWallet {
     }
   }
 
-  #signTransaction: XRPLSignTransactionMethod = async (transaction, account, network) => {
+  #signTransaction: XRPLSignTransactionMethod = async ({ transaction, account, network }) => {
     const { response } = await window.xrpl.crossmark.async.signAndWait(transaction)
     return {
       signed_tx: Uint8Array.from(hexToBytes(response.data.txBlob)),
@@ -185,7 +185,7 @@ export class CrossmarkWallet implements XRPLBaseWallet {
     }
   }
 
-  #signAndSubmitTransaction: XRPLSignAndSubmitTransactionMethod = async (transaction, account, network) => {
+  #signAndSubmitTransaction: XRPLSignAndSubmitTransactionMethod = async ({ transaction, account, chain }) => {
     const { response } = await window.xrpl.crossmark.async.signAndSubmitAndWait(transaction)
     return {
       // TODO

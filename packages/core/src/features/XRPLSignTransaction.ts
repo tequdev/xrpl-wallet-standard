@@ -10,7 +10,7 @@ export type XRPLSignTransactionFeature = {
   }
 }
 
-export type XRPLSignTransactionMethod = (...input: XRPLSignTransactionInput[]) => Promise<SignTransactionOutput>
+export type XRPLSignTransactionMethod = (input: XRPLSignTransactionInput) => Promise<SignTransactionOutput>
 
 export interface XRPLSignTransactionInput {
   transaction: Uint8Array
