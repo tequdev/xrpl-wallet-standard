@@ -169,7 +169,7 @@ export class CrossmarkWallet implements XRPLBaseWallet {
 
   #connect: StandardConnectMethod = async ({ silent } = {}) => {
     const { response } = await window.xrpl.crossmark.async.signInAndWait()
-    this.#accounts = [new XRPLWalletAccount(hexToBytes(response.data.publicKey))]
+    this.#accounts = [new XRPLWalletAccount(response.data.address)]
     this.#emit('change', { accounts: this.accounts })
     return {
       accounts: this.accounts,

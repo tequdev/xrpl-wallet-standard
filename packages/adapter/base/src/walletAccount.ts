@@ -4,9 +4,10 @@ import { deriveAddress } from 'ripple-keypairs'
 
 export class XRPLWalletAccount implements WalletAccount {
   readonly #publicKey: Uint8Array
+  readonly #address: string
 
   get address() {
-    return deriveAddress(bytesToHex(this.publicKey))
+    return this.#address
   }
 
   get publicKey() {
@@ -21,11 +22,11 @@ export class XRPLWalletAccount implements WalletAccount {
     return ['xrpl:signTransaction', 'xrpl:signAndSubmitTransaction'] as const
   }
 
-  constructor(publicKey: Uint8Array) {
+  constructor(address: string) {
     if (new.target === XRPLWalletAccount) {
       Object.freeze(this)
     }
+    this.#address = address
 
-    this.#publicKey = publicKey
   }
 }
