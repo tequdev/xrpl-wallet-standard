@@ -1,0 +1,25 @@
+{
+  "name": "@xrpl-wallet-adapter/base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "pkgroll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wallet-standard/base": "1.0.1",
+    "@wallet-standard/features": "1.0.3",
+    "@xrpl-wallet-standard/core": "workspace:*",
+    "@xrplf/isomorphic": "^1.0.1",
+    "ripple-keypairs": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.12"
+  }
+}
