@@ -1,6 +1,4 @@
 import { type WalletAccount, XRPL_MAINNET } from '@xrpl-wallet-standard/core'
-import { bytesToHex } from '@xrplf/isomorphic/utils'
-import { deriveAddress } from 'ripple-keypairs'
 
 export class XRPLWalletAccount implements WalletAccount {
   readonly #publicKey: Uint8Array
