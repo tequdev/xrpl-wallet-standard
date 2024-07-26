@@ -1,0 +1,20 @@
+{
+  "name": "@xrpl-wallet-adapter/xaman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "scripts": {
+    "build": "pkgroll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wallet-standard/base": "1.0.1",
+    "@xrpl-wallet-adapter/base": "workspace:*",
+    "@xrpl-wallet-standard/core": "workspace:*",
+    "xumm-oauth2-pkce": "^2.8.5"
+  }
+}
