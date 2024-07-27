@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@wallet-standard/core": "^1.0.3"
+    "@wallet-standard/core": "^1.0.3",
+    "xrpl": "^4.0.0"
   }
 }

@@ -15,6 +15,7 @@
     "@wallet-standard/base": "1.0.1",
     "@xrpl-wallet-adapter/base": "workspace:*",
     "@xrpl-wallet-standard/core": "workspace:*",
+    "xrpl": "^4.0.0",
     "xumm-oauth2-pkce": "^2.8.5"
   }
 }

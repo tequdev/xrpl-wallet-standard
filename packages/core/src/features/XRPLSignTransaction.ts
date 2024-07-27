@@ -1,5 +1,8 @@
 import type { WalletAccount } from '@wallet-standard/core'
 import type { XRPLIdentifierString } from '../networks'
+import type { SubmittableTransaction, BaseTransaction } from 'xrpl'
+
+type PrepearedTransaction = SubmittableTransaction | BaseTransaction
 
 export type XRPLSignTransactionVersion = '1.0.0'
 
@@ -13,15 +16,14 @@ export type XRPLSignTransactionFeature = {
 export type XRPLSignTransactionMethod = (input: XRPLSignTransactionInput) => Promise<SignTransactionOutput>
 
 export interface XRPLSignTransactionInput {
-  transaction: Uint8Array
+  tx_json: PrepearedTransaction
   account: WalletAccount
   network: XRPLIdentifierString
   options?: SignTransactionOption
 }
 
 export interface SignTransactionOutput {
-  signed_tx: Uint8Array
-  signature: Uint8Array
+  signed_tx_blob: string
 }
 
 export interface SignTransactionOption {
