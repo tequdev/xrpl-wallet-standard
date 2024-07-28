@@ -15,6 +15,7 @@ import {
   XRPL_DEVNET,
   XAHAU_MAINNET,
   XAHAU_TESTNET,
+  XRPLIdentifierString,
 } from '@xrpl-wallet-standard/core'
 import { XummPkce, ResolvedFlow } from 'xumm-oauth2-pkce'
 import { Client, type TxV1Response } from 'xrpl'
@@ -100,8 +101,7 @@ export class XamanWallet implements XRPLBaseWallet {
 
   #signTransaction: XRPLSignTransactionMethod = async ({ tx_json, account, network }) => {
     const createdPayload = await this.#sdk.payload.create(
-      // @ts-ignore // TODO: chain -> force_network
-      { txjson: tx_json, options: { submit: false } }
+      { txjson: tx_json as any, options: { submit: false, force_network: this.#getXamanNetworkNameFromChain(network) } }
     )
     if (!createdPayload) throw new Error("Invalid Payload Parameter");
     const uuid = createdPayload.uuid;
@@ -125,14 +125,12 @@ export class XamanWallet implements XRPLBaseWallet {
 
   #signAndSubmitTransaction: XRPLSignAndSubmitTransactionMethod = async ({ tx_json, account, network }) => {
     const createdPayload = await this.#sdk.payload.create(
-      // @ts-ignore // TODO: chain -> force_network
-      { txjson: tx_json, options: { submit: true } },
+      { txjson: tx_json as any, options: { submit: true, force_network: this.#getXamanNetworkNameFromChain(network) } },
     )
     if (!createdPayload) throw new Error("Invalid Payload Parameter");
     const uuid = createdPayload.uuid;
     const subscription = await this.#sdk.payload.subscribe(uuid);
     subscription.websocket.onmessage = (message) => {
-      console.log(message.data)
       // resolve promise when receive signed message
       if (message.data.toString().match(/"signed"/)) {
         const json = JSON.parse(message.data.toString());
@@ -169,5 +167,28 @@ export class XamanWallet implements XRPLBaseWallet {
 
   #off<E extends StandardEventsNames>(event: E, listener: StandardEventsListeners[E]): void {
     this.#listeners[event] = this.#listeners[event]?.filter((existingListener) => listener !== existingListener)
+  }
+
+  #getXamanNetworkNameFromChain(chain: XRPLIdentifierString) {
+    console.log(chain)
+    switch (chain) {
+      case XRPL_MAINNET:
+      case 'xrpl:mainnet':
+        return 'MAINNET'
+      case XRPL_TESTNET:
+      case 'xrpl:testnet':
+        return 'TESTNET'
+      case XRPL_DEVNET:
+      case 'xrpl:devnet':
+        return 'DEVNET'
+      case XAHAU_MAINNET:
+      case 'xrpl:xahau':
+        return 'XAHAUMAINNET'
+      case XAHAU_TESTNET:
+      case 'xrpl:xahau-testnet':
+        return 'XAHAUTESTNET'
+      default:
+        throw new Error('Invalid Chain')
+    }
   }
 }
