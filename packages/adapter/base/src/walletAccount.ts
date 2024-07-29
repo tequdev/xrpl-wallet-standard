@@ -25,6 +25,5 @@ export class XRPLWalletAccount implements WalletAccount {
       Object.freeze(this)
     }
     this.#address = address
-
   }
 }

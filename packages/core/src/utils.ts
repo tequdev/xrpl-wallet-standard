@@ -1,9 +1,17 @@
 import type { StandardConnectFeature, StandardEventsFeature, Wallet, WalletWithFeatures } from '@wallet-standard/core'
-import { XRPLSignAndSubmitTransactionFeature, XRPLSignTransactionFeature } from './features'
+import type { XRPLSignAndSubmitTransactionFeature, XRPLSignTransactionFeature } from './features'
 
-const REQUIRED_FEATURES = ['standard:connect', 'standard:events', 'xrpl:signTransaction', 'xrpl:signAndSubmitTransaction'] as const
+const REQUIRED_FEATURES = [
+  'standard:connect',
+  'standard:events',
+  'xrpl:signTransaction',
+  'xrpl:signAndSubmitTransaction',
+] as const
 
-export type RequiredFetures = StandardConnectFeature & StandardEventsFeature & XRPLSignTransactionFeature & XRPLSignAndSubmitTransactionFeature
+export type RequiredFetures = StandardConnectFeature &
+  StandardEventsFeature &
+  XRPLSignTransactionFeature &
+  XRPLSignAndSubmitTransactionFeature
 
 export function isWalletWithRequiredFeatureSet<AdditionalFeatures extends Wallet['features']>(
   wallet: Wallet,

@@ -1,9 +1,10 @@
 import type { WalletAccount } from '@wallet-standard/core'
+import type { BaseTransaction, SubmittableTransaction, TxResponse, TxV1Response } from 'xrpl'
 import type { XRPLIdentifierString } from '../networks'
-import type { SubmittableTransaction, BaseTransaction, TxResponse, TxV1Response } from 'xrpl'
 
 type PrepearedTransaction = SubmittableTransaction | BaseTransaction
-type SignedTransaction = PrepearedTransaction & Required<Pick<BaseTransaction, 'Fee' | 'Sequence' | 'TxnSignature' | 'SigningPubKey'>>
+type SignedTransaction = PrepearedTransaction &
+  Required<Pick<BaseTransaction, 'Fee' | 'Sequence' | 'TxnSignature' | 'SigningPubKey'>>
 
 export type XRPLSignAndSubmitTransactionVersion = '1.0.0'
 
@@ -15,7 +16,7 @@ export type XRPLSignAndSubmitTransactionFeature = {
 }
 
 export type XRPLSignAndSubmitTransactionMethod = (
-  input: XRPLSignAndSubmitTransactionInput
+  input: XRPLSignAndSubmitTransactionInput,
 ) => Promise<SignAndSubmitTransactionOutput>
 
 export interface XRPLSignAndSubmitTransactionInput {
