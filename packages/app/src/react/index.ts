@@ -1,1 +1,3 @@
-export * from '@wallet-standard/react'
+export { WalletStandardProvider } from '@wallet-standard/react'
+export * from './hooks'
+export * from './utils'

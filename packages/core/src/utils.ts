@@ -13,6 +13,8 @@ export type RequiredFetures = StandardConnectFeature &
   XRPLSignTransactionFeature &
   XRPLSignAndSubmitTransactionFeature
 
+export type XRPLWallet = WalletWithFeatures<RequiredFetures>
+
 export function isWalletWithRequiredFeatureSet<AdditionalFeatures extends Wallet['features']>(
   wallet: Wallet,
   additionalFeatures: (keyof AdditionalFeatures)[] = [],
