@@ -1,6 +1,6 @@
 {
   "name": "@xrpl-wallet-adapter/crossmark",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@wallet-standard/base": "1.0.1",
-    "@xrpl-wallet-standard/core": "workspace:*",
-    "@xrpl-wallet-adapter/base": "workspace:*"
+    "@xrpl-wallet-adapter/base": "workspace:*",
+    "@xrpl-wallet-standard/core": "workspace:*"
   }
 }
