@@ -13,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "@xrpl-wallet-standard/core": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

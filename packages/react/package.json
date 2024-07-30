@@ -27,5 +27,8 @@
   "peerDependencies": {
     "@types/react": "*",
     "react": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

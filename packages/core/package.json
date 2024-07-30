@@ -14,5 +14,8 @@
   "dependencies": {
     "@wallet-standard/core": "^1.0.3",
     "xrpl": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
