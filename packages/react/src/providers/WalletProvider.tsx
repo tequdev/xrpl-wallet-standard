@@ -3,6 +3,7 @@ import React from 'react'
 import type { ReactNode } from 'react'
 import { useRef } from 'react'
 import { WalletContext } from '../contexts/walletContext.js'
+import { useAutoConnect } from '../hooks/useAutoConnect.js'
 import { createWalletStore } from '../store'
 
 export type WalletProviderProps = {
@@ -31,5 +32,6 @@ export function WalletProvider({ autoConnect = true, children }: WalletProviderP
 type WalletAutoConnectProps = Pick<WalletProviderProps, 'children'>
 
 function WalletAutoConnect({ children }: WalletAutoConnectProps) {
+  useAutoConnect()
   return children
 }

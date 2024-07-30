@@ -1,4 +1,4 @@
-import { type XRPLBaseWallet, XRPLWalletAccount, hexToBytes } from '@xrpl-wallet-adapter/base'
+import { type XRPLBaseWallet, XRPLWalletAccount } from '@xrpl-wallet-adapter/base'
 import {
   type StandardConnectFeature,
   type StandardConnectMethod,
@@ -102,6 +102,9 @@ interface CrossmarkWindow extends Window {
           }
         }>
       }
+      session: {
+        address?: string
+      }
     }
   }
 }
@@ -167,9 +170,17 @@ export class CrossmarkWallet implements XRPLBaseWallet {
     }
   }
 
-  #connect: StandardConnectMethod = async ({ silent } = {}) => {
-    const { response } = await window.xrpl.crossmark.async.signInAndWait()
-    this.#accounts = [new XRPLWalletAccount(response.data.address)]
+  #connect: StandardConnectMethod = async ({ silent = false } = {}) => {
+    let address: string | undefined
+    if (silent) {
+      address = window.xrpl.crossmark.session.address
+    } else {
+      const { response } = await window.xrpl.crossmark.async.signInAndWait()
+      address = response.data.address
+    }
+    if (!address) return { accounts: [] }
+
+    this.#accounts = [new XRPLWalletAccount(address)]
     this.#emit('change', { accounts: this.accounts })
     return {
       accounts: this.accounts,

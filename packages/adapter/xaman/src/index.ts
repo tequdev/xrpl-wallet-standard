@@ -83,17 +83,19 @@ export class XamanWallet implements XRPLBaseWallet {
     this.#client = new XummPkce(apiKey)
   }
 
-  #connect: StandardConnectMethod = async ({ silent } = {}) => {
-    await this.#client.authorize()
-    const state = this.#client.state()
-    if (state) {
-      const resolvedState = await state
-      if (resolvedState) {
-        this.#accounts = [new XRPLWalletAccount(resolvedState.me.account)]
-        this.#sdk = resolvedState.sdk
-        this.#emit('change', { accounts: this.accounts })
-      }
+  #connect: StandardConnectMethod = async ({ silent = false } = {}) => {
+    if (!silent) {
+      await this.#client.authorize()
     }
+    const state = this.#client.state()
+    if (!state) return { accounts: [] }
+
+    const resolvedState = await state
+    if (!resolvedState) return { accounts: [] }
+
+    this.#accounts = [new XRPLWalletAccount(resolvedState.me.account)]
+    this.#sdk = resolvedState.sdk
+    this.#emit('change', { accounts: this.accounts })
 
     return {
       accounts: this.accounts,
@@ -173,7 +175,6 @@ export class XamanWallet implements XRPLBaseWallet {
   }
 
   #getXamanNetworkNameFromChain(chain: XRPLIdentifierString) {
-    console.log(chain)
     switch (chain) {
       case XRPL_MAINNET:
       case 'xrpl:mainnet':
