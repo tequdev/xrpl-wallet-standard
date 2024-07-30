@@ -1,0 +1,31 @@
+{
+  "name": "@xrpl-wallet-standard/react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "pkgroll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@xrpl-wallet-standard/app": "workspace:*",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "react": "^18.3.1"
+  },
+  "peerDependencies": {
+    "@types/react": "*",
+    "react": "*"
+  }
+}

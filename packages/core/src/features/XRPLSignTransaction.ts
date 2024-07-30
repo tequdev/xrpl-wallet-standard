@@ -2,7 +2,7 @@ import type { WalletAccount } from '@wallet-standard/core'
 import type { BaseTransaction, SubmittableTransaction } from 'xrpl'
 import type { XRPLIdentifierString } from '../networks'
 
-type PrepearedTransaction = SubmittableTransaction | BaseTransaction
+export type PrepearedTransaction = SubmittableTransaction | BaseTransaction
 
 export type XRPLSignTransactionVersion = '1.0.0'
 
