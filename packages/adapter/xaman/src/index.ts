@@ -162,7 +162,8 @@ export class XamanWallet implements XRPLBaseWallet {
   }
 
   #on: StandardEventsOnMethod = (event, listener) => {
-    this.#listeners[event]?.push(listener) || (this.#listeners[event] = [listener])
+    if (this.#listeners[event]) this.#listeners[event]?.push(listener)
+    else this.#listeners[event] = [listener]
     return (): void => this.#off(event, listener)
   }
 
