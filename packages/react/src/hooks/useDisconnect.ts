@@ -1,3 +1,4 @@
+import { type StandardDisconnectFeature, isWalletWithRequiredFeatureSet } from '@xrpl-wallet-standard/app'
 import { useWalletStore } from './useWalletStore'
 
 export const useDisconnect = () => {
@@ -7,8 +8,8 @@ export const useDisconnect = () => {
   const handleDisconnect = async () => {
     if (!wallet) throw new Error('Wallet is not connected')
 
-    const disconnectFeature = wallet.features['standard:disconnect']
-    if (disconnectFeature) await disconnectFeature.disconnect()
+    if (isWalletWithRequiredFeatureSet<StandardDisconnectFeature>(wallet, ['standard:disconnect']))
+      await wallet.features['standard:disconnect'].disconnect()
 
     setWalletDisconnected()
   }

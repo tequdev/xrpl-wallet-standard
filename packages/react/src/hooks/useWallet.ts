@@ -3,7 +3,7 @@ import type { WalletConnectionStatus } from '../store'
 import { useWalletStore } from './useWalletStore'
 
 type UseWalletResult = {
-  wallet: XRPLWallet
+  wallet: XRPLWallet | null
   status: WalletConnectionStatus
 }
 
