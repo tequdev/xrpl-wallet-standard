@@ -2,6 +2,8 @@ import { type XRPLBaseWallet, XRPLWalletAccount } from '@xrpl-wallet-adapter/bas
 import {
   type StandardConnectFeature,
   type StandardConnectMethod,
+  type StandardDisconnectFeature,
+  type StandardDisconnectMethod,
   type StandardEventsFeature,
   type StandardEventsListeners,
   type StandardEventsNames,
@@ -50,12 +52,17 @@ export class XamanWallet implements XRPLBaseWallet {
 
   get features(): StandardConnectFeature &
     StandardEventsFeature &
+    StandardDisconnectFeature &
     XRPLSignTransactionFeature &
     XRPLSignAndSubmitTransactionFeature {
     return {
       'standard:connect': {
         version: '1.0.0',
         connect: this.#connect,
+      },
+      'standard:disconnect': {
+        version: '1.0.0',
+        disconnect: this.#disconnect,
       },
       'standard:events': {
         version: '1.0.0',
@@ -100,6 +107,10 @@ export class XamanWallet implements XRPLBaseWallet {
     return {
       accounts: this.accounts,
     }
+  }
+
+  #disconnect: StandardDisconnectMethod = async () => {
+    this.#client.logout()
   }
 
   #signTransaction: XRPLSignTransactionMethod = async ({ tx_json, account, network }) => {
