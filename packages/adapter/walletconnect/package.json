@@ -1,0 +1,28 @@
+{
+  "name": "@xrpl-wallet-adapter/walletconnect",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "scripts": {
+    "build": "pkgroll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wallet-standard/base": "1.0.1",
+    "@walletconnect/modal": "^2.6.2",
+    "@walletconnect/universal-provider": "^2.14.0",
+    "@walletconnect/utils": "^2.14.0",
+    "@xrpl-wallet-adapter/base": "workspace:*",
+    "@xrpl-wallet-standard/core": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@walletconnect/types": "^2.14.0"
+  }
+}

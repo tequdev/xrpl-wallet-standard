@@ -9,7 +9,11 @@ export const useDisconnect = () => {
     if (!wallet) throw new Error('Wallet is not connected')
 
     if (isWalletWithRequiredFeatureSet<StandardDisconnectFeature>(wallet, ['standard:disconnect']))
-      await wallet.features['standard:disconnect'].disconnect()
+      try {
+        await wallet.features['standard:disconnect'].disconnect()
+      } catch (e) {
+        console.error(e)
+      }
 
     setWalletDisconnected()
   }

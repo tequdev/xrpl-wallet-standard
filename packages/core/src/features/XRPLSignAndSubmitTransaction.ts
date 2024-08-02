@@ -23,7 +23,7 @@ export interface XRPLSignAndSubmitTransactionInput {
   tx_json: PrepearedTransaction
   account: WalletAccount
   network: XRPLIdentifierString
-  option?: SignAndSubmitTransactionOption
+  options?: SignAndSubmitTransactionOption
 }
 
 export interface SignAndSubmitTransactionOutput {

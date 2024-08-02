@@ -42,7 +42,7 @@ export function createWalletStore({ wallets, storage, storageKey, autoConnectEna
       (set, get) => ({
         autoConnectEnabled,
         wallets,
-        accounts: [] as WalletAccount[],
+        accounts: [] as readonly WalletAccount[],
         currentWallet: null,
         currentAccount: null,
         lastConnectedAccountAddress: null,
