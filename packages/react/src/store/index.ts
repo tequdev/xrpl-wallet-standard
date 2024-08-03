@@ -32,7 +32,7 @@ export type State = {
 type WalletConfiguration = {
   autoConnectEnabled: boolean
   wallets: XRPLWallet[]
-  storage: StateStorage
+  storage?: StateStorage
   storageKey: string
 }
 
@@ -109,7 +109,7 @@ export function createWalletStore({ wallets, storage, storageKey, autoConnectEna
       }),
       {
         name: storageKey,
-        storage: createJSONStorage(() => storage),
+        storage: storage && createJSONStorage(() => storage),
         partialize: ({ lastConnectedWalletName, lastConnectedAccountAddress }) => ({
           lastConnectedWalletName,
           lastConnectedAccountAddress,

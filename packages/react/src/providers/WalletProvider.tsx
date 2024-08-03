@@ -17,7 +17,6 @@ export function WalletProvider({ autoConnect = true, children }: WalletProviderP
     createWalletStore({
       autoConnectEnabled: autoConnect,
       wallets: getRegisterdXRPLWallets(),
-      storage: localStorage,
       storageKey: '@xrpl-wallet-standard/app/react',
     }),
   )
