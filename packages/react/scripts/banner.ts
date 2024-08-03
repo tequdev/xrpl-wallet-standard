@@ -6,8 +6,9 @@ const distPath = path.resolve(__dirname, '../dist')
 const targets = ['index.cjs', 'index.mjs']
 
 targets.forEach((target) => {
-  const code = readFileSync(`${distPath}/${target}`, 'utf8')
+  const filePath = `${distPath}/${target}`
+  const code = readFileSync(filePath, 'utf8')
 
-  writeFileSync(`${distPath}/index.cjs`, `"use client;"\n`)
-  appendFileSync(`${distPath}/index.cjs`, code)
+  writeFileSync(filePath, `"use client";\n`)
+  appendFileSync(filePath, code)
 })
