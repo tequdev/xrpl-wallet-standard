@@ -1,4 +1,4 @@
-import { getRegisterdXRPLWallets } from '@xrpl-wallet-standard/app'
+import { type XRPLWallet, getRegisterdXRPLWallets, registerWallet } from '@xrpl-wallet-standard/app'
 import React from 'react'
 import type { ReactNode } from 'react'
 import { useRef } from 'react'
@@ -9,10 +9,18 @@ import { createWalletStore } from '../store'
 export type WalletProviderProps = {
   preferredWallets?: string[]
   autoConnect?: boolean
+  registerWallets?: XRPLWallet[]
   children: ReactNode
 }
 
-export function WalletProvider({ autoConnect = true, children }: WalletProviderProps) {
+export function WalletProvider({ autoConnect = true, registerWallets, children }: WalletProviderProps) {
+  if (typeof window !== 'undefined' && registerWallets)
+    registerWallets
+      .filter((wallet) => !getRegisterdXRPLWallets().find((rw) => rw.name === wallet.name))
+      .forEach((wallet) => {
+        registerWallet(wallet)
+      })
+
   const storeRef = useRef(
     createWalletStore({
       autoConnectEnabled: autoConnect,

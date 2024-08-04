@@ -5,7 +5,6 @@ import './index.css'
 import { CrossmarkWallet } from '@xrpl-wallet-adapter/crossmark'
 import { WalletConnectWallet } from '@xrpl-wallet-adapter/walletconnect'
 import { XamanWallet } from '@xrpl-wallet-adapter/xaman'
-import { getWallets, registerWallet } from '@xrpl-wallet-standard/app'
 import { WalletProvider } from '@xrpl-wallet-standard/react'
 
 const additionalWallets = [
@@ -23,19 +22,11 @@ const additionalWallets = [
   }),
 ]
 
-const registeredWallets = getWallets().get()
-
-additionalWallets
-  .filter((wallet) => !registeredWallets.find((rw) => rw.name === wallet.name))
-  .forEach((wallet) => {
-    registerWallet(wallet)
-  })
-
 const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('Failed to find the root element')
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <WalletProvider>
+    <WalletProvider registerWallets={additionalWallets}>
       <App />
     </WalletProvider>
   </React.StrictMode>,
