@@ -1,0 +1,29 @@
+{
+  "name": "nextjs-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.5",
+    "@xrpl-wallet-standard/app": "workspace:*",
+    "@xrpl-wallet-standard/react": "workspace:*",
+    "@xrpl-wallet-adapter/crossmark": "workspace:*",
+    "@xrpl-wallet-adapter/walletconnect": "workspace:*",
+    "@xrpl-wallet-adapter/xaman": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}
