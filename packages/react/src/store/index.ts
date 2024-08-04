@@ -109,7 +109,7 @@ export function createWalletStore({ wallets, storage, storageKey, autoConnectEna
       }),
       {
         name: storageKey,
-        storage: storage && createJSONStorage(() => storage),
+        storage: createJSONStorage(() => storage || localStorage),
         partialize: ({ lastConnectedWalletName, lastConnectedAccountAddress }) => ({
           lastConnectedWalletName,
           lastConnectedAccountAddress,

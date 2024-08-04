@@ -13,8 +13,10 @@ export type WalletProviderProps = {
   children: ReactNode
 }
 
+const isSSR = typeof window === 'undefined'
+
 export function WalletProvider({ autoConnect = true, registerWallets, children }: WalletProviderProps) {
-  if (typeof window !== 'undefined' && registerWallets)
+  if (!isSSR && registerWallets)
     registerWallets
       .filter((wallet) => !getRegisterdXRPLWallets().find((rw) => rw.name === wallet.name))
       .forEach((wallet) => {
@@ -22,11 +24,13 @@ export function WalletProvider({ autoConnect = true, registerWallets, children }
       })
 
   const storeRef = useRef(
-    createWalletStore({
-      autoConnectEnabled: autoConnect,
-      wallets: getRegisterdXRPLWallets(),
-      storageKey: '@xrpl-wallet-standard/app/react',
-    }),
+    !isSSR
+      ? createWalletStore({
+          autoConnectEnabled: autoConnect,
+          wallets: getRegisterdXRPLWallets(),
+          storageKey: '@xrpl-wallet-standard/app/react',
+        })
+      : null,
   )
 
   return (
