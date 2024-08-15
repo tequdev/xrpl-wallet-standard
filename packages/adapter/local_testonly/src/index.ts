@@ -11,6 +11,7 @@ import {
   type XRPLSignAndSubmitTransactionMethod,
   type XRPLSignTransactionFeature,
   type XRPLSignTransactionMethod,
+  type XRPLStandardIdentifier,
   XRPL_MAINNET,
 } from '@xrpl-wallet-standard/core'
 import { XrplDefinitions, type XrplDefinitionsBase, encode, encodeForSigning } from 'ripple-binary-codec'
@@ -21,7 +22,7 @@ import type { Amendments } from 'xrpl/dist/npm/models/ledger'
 const LOCAL_STORAGE_KEY = '@xrpl-wallet-adapter/local-testonly'
 
 interface LocalWalletProps {
-  additionalNetworks?: Record<XRPLIdentifierString, { server: string; faucet: string }>
+  additionalNetworks?: Record<XRPLStandardIdentifier, { server: string; faucet: string }>
   autoFaucetNetwork?: XRPLIdentifierString
 }
 
@@ -32,7 +33,7 @@ export class LocalWallet_TESTONLY implements XRPLBaseWallet {
 
   #accounts: XRPLWalletAccount[] = []
 
-  #additionalNetworks: Record<XRPLIdentifierString, { server: string; faucet: string }>
+  #additionalNetworks: Record<XRPLStandardIdentifier, { server: string; faucet: string }>
   #autoFaucetNetwork: XRPLIdentifierString
 
   readonly #listeners: { [E in StandardEventsNames]?: StandardEventsListeners[E][] } = {}

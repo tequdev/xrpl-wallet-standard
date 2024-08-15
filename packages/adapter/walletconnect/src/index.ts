@@ -258,7 +258,7 @@ export class WalletConnectWallet implements XRPLBaseWallet {
         return 'xrpl:1'
       case 'devnet':
         return 'xrpl:2'
-      case 'xahau':
+      case 'xahau-mainnet':
         return 'xrpl:21337'
       case 'xahau-testnet':
         return 'xrpl:21338'

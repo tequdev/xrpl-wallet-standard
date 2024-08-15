@@ -198,7 +198,7 @@ export class XamanWallet implements XRPLBaseWallet {
       case 'xrpl:devnet':
         return 'DEVNET'
       case XAHAU_MAINNET:
-      case 'xrpl:xahau':
+      case 'xrpl:xahau-mainnet':
         return 'XAHAUMAINNET'
       case XAHAU_TESTNET:
       case 'xrpl:xahau-testnet':

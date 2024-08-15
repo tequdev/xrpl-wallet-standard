@@ -18,4 +18,12 @@ export function isXRPLNetworks(network: IdentifierString): network is XRPLProtor
   return XRPL_PROTOCOL_NETWORKS.includes(network as XRPLProtorcolNetwork)
 }
 
-export type XRPLIdentifierString = `xrpl:${string}`
+export type XRPLStandardIdentifier = `xrpl:${number}`
+export type XRPLReserverdIdentifier =
+  | 'xrpl:mainnet'
+  | 'xrpl:testnet'
+  | 'xrpl:devnet'
+  | 'xrpl:xahau-mainnet'
+  | 'xrpl:xahau-testnet'
+
+export type XRPLIdentifierString = XRPLStandardIdentifier | XRPLReserverdIdentifier
