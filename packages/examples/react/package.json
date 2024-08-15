@@ -10,13 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "@xrpl-wallet-adapter/crossmark": "workspace:*",
+    "@xrpl-wallet-adapter/local-testonly": "workspace:*",
+    "@xrpl-wallet-adapter/walletconnect": "workspace:*",
+    "@xrpl-wallet-adapter/xaman": "workspace:*",
     "@xrpl-wallet-standard/app": "workspace:*",
     "@xrpl-wallet-standard/react": "workspace:*",
-    "@xrpl-wallet-adapter/crossmark": "workspace:*",
-    "@xrpl-wallet-adapter/walletconnect": "workspace:*",
-    "@xrpl-wallet-adapter/xaman": "workspace:*"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -28,6 +29,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "typescript": "^5.2.2",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "vite-plugin-node-polyfills": "^0.22.0"
   }
 }

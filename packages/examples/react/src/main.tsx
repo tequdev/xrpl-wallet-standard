@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { CrossmarkWallet } from '@xrpl-wallet-adapter/crossmark'
+import { LocalWallet_TESTONLY } from '@xrpl-wallet-adapter/local-testonly'
 import { WalletConnectWallet } from '@xrpl-wallet-adapter/walletconnect'
 import { XamanWallet } from '@xrpl-wallet-adapter/xaman'
 import { WalletProvider } from '@xrpl-wallet-standard/react'
@@ -20,6 +21,7 @@ const additionalWallets = [
     },
     networks: ['xrpl:mainnet'],
   }),
+  new LocalWallet_TESTONLY(),
 ]
 
 const rootElement = document.getElementById('root')

@@ -1,6 +1,6 @@
 import './App.css'
 
-import { XRPL_MAINNET } from '@xrpl-wallet-standard/app'
+import { XRPL_TESTNET } from '@xrpl-wallet-standard/app'
 import {
   useAccount,
   useConnect,
@@ -28,9 +28,8 @@ function App() {
         {
           TransactionType: 'Invoke',
           Account: account.address,
-          NetworkID: 21338,
         },
-        XRPL_MAINNET,
+        XRPL_TESTNET,
       )
       console.log(signedTransaction)
     }
@@ -42,7 +41,7 @@ function App() {
         TransactionType: 'AccountSet',
         Account: account.address,
       },
-      XRPL_MAINNET,
+      XRPL_TESTNET,
     )
     console.log(signedTransaction)
   }
