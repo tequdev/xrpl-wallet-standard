@@ -286,8 +286,6 @@ export class LocalWallet_TESTONLY implements XRPLBaseWallet {
       case 'xrpl:xahau-testnet':
       case 'xrpl:21338':
         return 'wss://xahau-test.net'
-      case 'xrpl:31338':
-        return 'wss://jshooks.xahau-test.net'
       default:
         if (this.#additionalNetworks[network]) return this.#additionalNetworks[network].server
         throw new Error('Invalid network')
@@ -311,8 +309,6 @@ export class LocalWallet_TESTONLY implements XRPLBaseWallet {
       case 'xrpl:xahau-testnet':
       case 'xrpl:21338':
         return 'https://xahau-test.net/accounts'
-      case 'xrpl:31338':
-        return 'https://jshooks.xahau-test.net/newcreds'
       default:
         if (this.#additionalNetworks[network]) return this.#additionalNetworks[network].faucet
         throw new Error('Invalid network')
