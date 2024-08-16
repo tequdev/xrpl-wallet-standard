@@ -9,8 +9,8 @@
     "format": "biome format . --write",
     "lint": "biome lint .",
     "check": "biome check --write .",
-    "version": "pnpm run check && lerna version --no-private",
-    "publish": "pnpm run check && lerna publish from-package",
+    "version": "pnpm run check && pnpm run build && lerna version --no-private",
+    "publish": "pnpm run check && pnpm run build && lerna publish from-package",
     "preinstall": "npx only-allow pnpm"
   },
   "keywords": [],
