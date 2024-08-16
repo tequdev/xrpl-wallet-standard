@@ -17,6 +17,7 @@ The XRPL Wallet Standard project provides a comprehensive set of tools and libra
 - **@xrpl-wallet-adapter/base**: Base adapter for XRPL wallets, providing common functionalities.
 - **@xrpl-wallet-adapter/crossmark**: Adapter for Crossmark wallets.
 - **@xrpl-wallet-adapter/xaman**: Adapter for Xaman wallets.
+- **@xrpl-wallet-adapter/local-testonly**: Adapter for local test wallets.
 
 ## Contributing
 
