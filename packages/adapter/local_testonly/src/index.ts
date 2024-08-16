@@ -21,8 +21,13 @@ import type { Amendments } from 'xrpl/dist/npm/models/ledger'
 
 const LOCAL_STORAGE_KEY = '@xrpl-wallet-adapter/local-testonly'
 
+interface NetworkInfo {
+  server: string
+  faucet: string
+}
+
 interface LocalWalletProps {
-  additionalNetworks?: Record<XRPLStandardIdentifier, { server: string; faucet: string }>
+  additionalNetworks?: Record<XRPLStandardIdentifier, NetworkInfo>
   autoFaucetNetwork?: XRPLIdentifierString
 }
 
@@ -33,7 +38,7 @@ export class LocalWallet_TESTONLY implements XRPLBaseWallet {
 
   #accounts: XRPLWalletAccount[] = []
 
-  #additionalNetworks: Record<XRPLStandardIdentifier, { server: string; faucet: string }>
+  #additionalNetworks: Record<XRPLStandardIdentifier, NetworkInfo>
   #autoFaucetNetwork: XRPLIdentifierString
 
   readonly #listeners: { [E in StandardEventsNames]?: StandardEventsListeners[E][] } = {}
