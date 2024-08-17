@@ -18,6 +18,7 @@ import { XrplDefinitions, type XrplDefinitionsBase, encode, encodeForSigning } f
 import { sign } from 'ripple-keypairs'
 import { Client, type LedgerEntryRequest, type LedgerEntryResponse, Wallet } from 'xrpl'
 import type { Amendments } from 'xrpl/dist/npm/models/ledger'
+import { waitForFinalTransactionOutcome } from 'xrpl/dist/npm/sugar'
 
 const LOCAL_STORAGE_KEY = '@xrpl-wallet-adapter/local-testonly'
 
@@ -191,13 +192,19 @@ export class LocalWallet_TESTONLY implements XRPLBaseWallet {
     prepared.TxnSignature = signature
     const tx_blob = encode(prepared, definitions)
 
-    const response = await client.submitAndWait(tx_blob)
+    const response = await client.request({ command: 'submit', tx_blob })
+    const txResponse = await waitForFinalTransactionOutcome(
+      client,
+      response.result.tx_json.hash!,
+      prepared.LastLedgerSequence,
+      response.result.engine_result,
+    )
 
-    console.log(response.result)
+    console.log(txResponse.result)
 
     return {
-      tx_json: response.result as any,
-      tx_hash: response.result.hash,
+      tx_json: txResponse.result as any,
+      tx_hash: txResponse.result.hash,
     }
   }
 
