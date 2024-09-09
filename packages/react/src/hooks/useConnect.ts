@@ -15,6 +15,7 @@ export const useConnect = () => {
       setWallet(wallet, accounts, account)
       setConnectionStatus('connected')
     } catch (e) {
+      console.error(e)
       setConnectionStatus('disconnected')
     }
   }
