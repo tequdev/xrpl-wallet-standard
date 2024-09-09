@@ -4,6 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import { CrossmarkWallet } from '@xrpl-wallet-adapter/crossmark'
 import { LocalWallet_TESTONLY } from '@xrpl-wallet-adapter/local-testonly'
+import { MetaMaskWallet } from '@xrpl-wallet-adapter/metamask'
 import { WalletConnectWallet } from '@xrpl-wallet-adapter/walletconnect'
 import { XamanWallet } from '@xrpl-wallet-adapter/xaman'
 import { WalletProvider } from '@xrpl-wallet-standard/react'
@@ -22,6 +23,7 @@ const additionalWallets = [
     networks: ['xrpl:mainnet'],
   }),
   new LocalWallet_TESTONLY(),
+  new MetaMaskWallet(),
 ]
 
 const rootElement = document.getElementById('root')
