@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@transia/xrpl": "2.7.3-alpha.28",
     "@wallet-standard/core": "^1.0.3",
     "xrpl": "^4.0.0"
   },

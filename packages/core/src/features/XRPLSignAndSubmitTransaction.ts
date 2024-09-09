@@ -1,10 +1,9 @@
+import type { Transaction as XahauTransaction } from '@transia/xrpl'
 import type { WalletAccount } from '@wallet-standard/core'
-import type { BaseTransaction, SubmittableTransaction, TxResponse, TxV1Response } from 'xrpl'
+import type { BaseTransaction, SubmittableTransaction, TxV1Response, Transaction as XRPLTransaction } from 'xrpl'
 import type { XRPLIdentifierString } from '../networks'
 
 type PrepearedTransaction = SubmittableTransaction | BaseTransaction
-type SignedTransaction = PrepearedTransaction &
-  Required<Pick<BaseTransaction, 'Fee' | 'Sequence' | 'TxnSignature' | 'SigningPubKey'>>
 
 export type XRPLSignAndSubmitTransactionVersion = '1.0.0'
 
@@ -28,7 +27,7 @@ export interface XRPLSignAndSubmitTransactionInput {
 
 export interface SignAndSubmitTransactionOutput {
   tx_hash: string
-  tx_json: TxV1Response['result']
+  tx_json: TxV1Response<XRPLTransaction | XahauTransaction>['result']
 }
 
 export interface SignAndSubmitTransactionOption {
