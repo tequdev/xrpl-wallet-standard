@@ -82,12 +82,16 @@ export const ConnectModal = ({ trigger }: Props) => {
     setOpen(false)
   }
 
+  const preventOpenAutoFocus = (e: Event) => {
+    e.preventDefault()
+  }
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
         <DialogOverlay />
-        <DialogContent aria-describedby={undefined}>
+        <DialogContent aria-describedby={undefined} onOpenAutoFocus={preventOpenAutoFocus}>
           <DialogTitle>Connect to</DialogTitle>
           <Dialog.Description />
           <WalletList onConnectSuccess={handleConnectSuccess} onConnectError={handleConnectError} />
