@@ -2,20 +2,19 @@ import './App.css'
 
 import { XRPL_TESTNET } from '@xrpl-wallet-standard/app'
 import {
+  ConnectButton,
   useAccount,
-  useConnect,
+  useConnectionStatus,
   useDisconnect,
   useSignAndSubmitTransaction,
   useSignTransaction,
   useWallet,
-  useWallets,
 } from '@xrpl-wallet-standard/react'
 
 function App() {
-  const wallets = useWallets()
   const { wallet: selectedWallet } = useWallet()
   const account = useAccount()
-  const { connect, status } = useConnect()
+  const status = useConnectionStatus()
   const disconnect = useDisconnect()
   const signTransaction = useSignTransaction()
   const signAndSubmitTransaction = useSignAndSubmitTransaction()
@@ -50,18 +49,7 @@ function App() {
     <>
       <h1>Wallet</h1>
       <div className="card">
-        {wallets.map((wallet) => (
-          <div key={wallet.name}>
-            <button
-              type="button"
-              onClick={() => connect(wallet)}
-              className={`walletButton ${wallet.name === selectedWallet?.name ? 'walletButton-selected' : ''}`}
-            >
-              <img src={wallet.icon} alt="" height={24} />
-              <span>{wallet.name}</span>
-            </button>
-          </div>
-        ))}
+        <ConnectButton />
       </div>
       <div className="card">
         {selectedWallet && (
