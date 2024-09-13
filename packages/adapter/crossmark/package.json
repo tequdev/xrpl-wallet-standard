@@ -9,7 +9,12 @@
     "build": "pkgroll"
   },
   "keywords": [],
-  "author": "",
+  "author": "tequ <git@tequ.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tequdev/xrpl-wallet-standard.git",
+    "directory": "packages/adapter/crossmark"
+  },
   "license": "ISC",
   "dependencies": {
     "@wallet-standard/base": "1.0.1",

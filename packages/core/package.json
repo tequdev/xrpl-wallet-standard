@@ -9,7 +9,12 @@
     "build": "pkgroll"
   },
   "keywords": [],
-  "author": "",
+  "author": "tequ <git@tequ.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tequdev/xrpl-wallet-standard.git",
+    "directory": "packages/core"
+  },
   "license": "ISC",
   "dependencies": {
     "@transia/xrpl": "2.7.3-alpha.28",

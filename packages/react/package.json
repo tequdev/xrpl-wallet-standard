@@ -5,12 +5,17 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
+  "files": ["dist", "src"],
   "scripts": {
-    "build": "pkgroll && tsx scripts/banner.ts",
-    "build:watch": "pkgroll --watch && tsx scripts/banner.ts"
+    "build": "pkgroll && tsx scripts/banner.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "tequ <git@tequ.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tequdev/xrpl-wallet-standard.git",
+    "directory": "packages/react"
+  },
   "license": "ISC",
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
