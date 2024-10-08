@@ -34,7 +34,7 @@ export function WalletProvider({ autoConnect = true, registerWallets, children }
 
   return (
     <WalletContext.Provider value={storeRef.current}>
-      <WalletAutoConnect>{children}</WalletAutoConnect>
+      {autoConnect ? <WalletAutoConnect>{children}</WalletAutoConnect> : children}
     </WalletContext.Provider>
   )
 }
