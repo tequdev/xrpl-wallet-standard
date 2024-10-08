@@ -1,3 +1,4 @@
+import { blackA, gray, mauve } from '@radix-ui/colors'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import { useState } from 'react'
@@ -7,22 +8,23 @@ import { WalletList } from '../WalletList'
 const CloseButton = styled.button`
   font-family: inherit;
   padding: 0;
+  border: none;
   border-radius: 100%;
   height: 25px;
   width: 25px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--violet-11);
+  color: ${gray.gray11};
   position: absolute;
   top: 10px;
   right: 10px;
   background-color: inherit;
   &:hover {
-    background-color: var(--violet-4);
+    background-color: ${blackA.blackA1};
   }
   &:focus {
-    box-shadow: 0 0 0 2px var(--violet-7);
+    outline: none;
   }
 `
 
@@ -63,7 +65,7 @@ const DialogTitle = styled(Dialog.Title)`
   margin: 0;
   text-align: center;
   font-weight: 500;
-  color: var(--mauve-11);
+  color: ${mauve.mauve11};
   font-size: 1.5em;
 `
 
