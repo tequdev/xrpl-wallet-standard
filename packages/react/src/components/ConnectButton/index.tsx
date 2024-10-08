@@ -24,6 +24,6 @@ const DefaultConnectButton = styled.button`
   }
 `
 
-export const ConnectButton = () => {
-  return <ConnectModal trigger={<DefaultConnectButton>Connect Wallet</DefaultConnectButton>} />
+export const ConnectButton = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+  return <ConnectModal trigger={<DefaultConnectButton {...props}>Connect Wallet</DefaultConnectButton>} />
 }
