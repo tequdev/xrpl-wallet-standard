@@ -1,6 +1,6 @@
 {
   "name": "@xrpl-wallet-standard/app",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -9,7 +9,12 @@
     "build": "pkgroll"
   },
   "keywords": [],
-  "author": "",
+  "author": "tequ <git@tequ.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tequdev/xrpl-wallet-standard.git",
+    "directory": "packages/app"
+  },
   "license": "ISC",
   "dependencies": {
     "@xrpl-wallet-standard/core": "workspace:*"

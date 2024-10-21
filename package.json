@@ -14,7 +14,11 @@
     "preinstall": "npx only-allow pnpm"
   },
   "keywords": [],
-  "author": "",
+  "author": "tequ <git@tequ.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tequdev/xrpl-wallet-standard.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",

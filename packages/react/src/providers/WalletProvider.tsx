@@ -1,5 +1,4 @@
 import { type XRPLWallet, getRegisterdXRPLWallets, registerWallet } from '@xrpl-wallet-standard/app'
-import React from 'react'
 import type { ReactNode } from 'react'
 import { useRef } from 'react'
 import { WalletContext } from '../contexts/walletContext.js'
@@ -35,7 +34,7 @@ export function WalletProvider({ autoConnect = true, registerWallets, children }
 
   return (
     <WalletContext.Provider value={storeRef.current}>
-      <WalletAutoConnect>{children}</WalletAutoConnect>
+      {autoConnect ? <WalletAutoConnect>{children}</WalletAutoConnect> : children}
     </WalletContext.Provider>
   )
 }

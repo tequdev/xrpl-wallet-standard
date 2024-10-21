@@ -1,6 +1,6 @@
 {
   "name": "@xrpl-wallet-adapter/local-testonly",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -9,7 +9,12 @@
     "build": "pkgroll"
   },
   "keywords": [],
-  "author": "",
+  "author": "tequ <git@tequ.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tequdev/xrpl-wallet-standard.git",
+    "directory": "packages/adapter/local_testonly"
+  },
   "license": "ISC",
   "dependencies": {
     "@wallet-standard/base": "1.0.1",

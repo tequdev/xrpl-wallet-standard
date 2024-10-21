@@ -10,12 +10,18 @@ export const useConnect = () => {
     setConnectionStatus('connecting')
     try {
       const { accounts } = await wallet.features['standard:connect'].connect(input)
-      const account = accounts.length > 0 ? accounts[0] : null
+
+      if (accounts.length === 0) {
+        throw new Error('No accounts found')
+      }
+
+      const account = accounts[0]
 
       setWallet(wallet, accounts, account)
       setConnectionStatus('connected')
-    } catch (e) {
+    } catch (e: any) {
       setConnectionStatus('disconnected')
+      throw e
     }
   }
 

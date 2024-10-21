@@ -1,6 +1,7 @@
 export * from './useAccount'
 export * from './useAccounts'
 export * from './useConnect'
+export * from './useConnectionStatus'
 export * from './useDisconnect'
 export * from './useSignAndSubmitTransaction'
 export * from './useSignTransaction'
