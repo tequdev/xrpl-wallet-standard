@@ -19,8 +19,7 @@ import {
 } from '@xrpl-wallet-standard/core'
 import type { BaseTransaction, SubmitResponse } from 'xrpl'
 
-export const SNAP_ORIGIN = 'local:http://localhost:8080'
-// export const SNAP_ORIGIN = 'npm:xrpl-snap'
+export const SNAP_ORIGIN = 'npm:xrpl-snap'
 
 interface MetamaskAccount {
   account: string
