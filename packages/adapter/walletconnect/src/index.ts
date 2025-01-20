@@ -18,6 +18,7 @@ import type {
   XRPLSignTransactionFeature,
   XRPLSignTransactionMethod,
 } from '@xrpl-wallet-standard/core'
+import { convertNetworkToChainId } from '@xrpl-wallet-standard/core/src/networks'
 
 export enum DEFAULT_XRPL_METHODS {
   XRPL_SIGN_TRANSACTION = 'xrpl_signTransaction',
@@ -119,7 +120,7 @@ export class WalletConnectWallet implements XRPLBaseWallet {
         this.#onSessionDisonnected()
       })
     })
-    this.#chains = networks.map((network) => this.#convertNetworkToChainId(network))
+    this.#chains = networks.map((network) => convertNetworkToChainId(network))
     this.#modal = new WalletConnectModal({
       projectId,
       chains: this.#chains,
@@ -247,23 +248,5 @@ export class WalletConnectWallet implements XRPLBaseWallet {
     this.#session = null
     this.#accounts = []
     this.#emit('change', { accounts: this.#accounts })
-  }
-
-  #convertNetworkToChainId = (network: XRPLIdentifierString) => {
-    const networkId = network.split(':').at(-1)
-    switch (networkId) {
-      case 'mainnet':
-        return 'xrpl:0'
-      case 'testnet':
-        return 'xrpl:1'
-      case 'devnet':
-        return 'xrpl:2'
-      case 'xahau-mainnet':
-        return 'xrpl:21337'
-      case 'xahau-testnet':
-        return 'xrpl:21338'
-      default:
-        return network
-    }
   }
 }

@@ -27,3 +27,37 @@ export type XRPLReserverdIdentifier =
   | 'xrpl:xahau-testnet'
 
 export type XRPLIdentifierString = XRPLStandardIdentifier | XRPLReserverdIdentifier
+
+export function convertNetworkToChainId(network: XRPLIdentifierString): `xrpl:${number}` {
+  switch (network) {
+    case 'xrpl:mainnet':
+      return XRPL_MAINNET
+    case 'xrpl:testnet':
+      return XRPL_TESTNET
+    case 'xrpl:devnet':
+      return XRPL_DEVNET
+    case 'xrpl:xahau-mainnet':
+      return XAHAU_MAINNET
+    case 'xrpl:xahau-testnet':
+      return XAHAU_TESTNET
+  }
+  return network
+}
+
+export function getNetworkWssEndpoint(network: XRPLIdentifierString): string | undefined {
+  const chainId = convertNetworkToChainId(network)
+  switch (chainId) {
+    case XRPL_MAINNET:
+      return 'wss://xrplcluster.com'
+    case XRPL_TESTNET:
+      return 'wss://s.altnet.rippletest.net:51233/'
+    case XRPL_DEVNET:
+      return 'wss://s.devnet.rippletest.net:51233/'
+    case XAHAU_MAINNET:
+      return 'wss://xahau.org'
+    case XAHAU_TESTNET:
+      return 'wss://xahau-test.net'
+    default:
+      return undefined
+  }
+}

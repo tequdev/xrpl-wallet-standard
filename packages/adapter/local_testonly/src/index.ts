@@ -6,14 +6,20 @@ import {
   type StandardEventsListeners,
   type StandardEventsNames,
   type StandardEventsOnMethod,
+  XAHAU_MAINNET,
+  XAHAU_TESTNET,
   type XRPLIdentifierString,
   type XRPLSignAndSubmitTransactionFeature,
   type XRPLSignAndSubmitTransactionMethod,
   type XRPLSignTransactionFeature,
   type XRPLSignTransactionMethod,
   type XRPLStandardIdentifier,
+  XRPL_DEVNET,
   XRPL_MAINNET,
+  XRPL_TESTNET,
+  getNetworkWssEndpoint,
 } from '@xrpl-wallet-standard/core'
+import { convertNetworkToChainId } from '@xrpl-wallet-standard/core/src/networks'
 import { XrplDefinitions, type XrplDefinitionsBase, encode, encodeForSigning } from 'ripple-binary-codec'
 import { sign } from 'ripple-keypairs'
 import { Client, type LedgerEntryRequest, type LedgerEntryResponse, Wallet } from 'xrpl'
@@ -56,8 +62,8 @@ export class LocalWallet_TESTONLY implements XRPLBaseWallet {
     return this.#icon
   }
 
-  get chains() {
-    return [XRPL_MAINNET]
+  get chains(): `xrpl:${number}`[] {
+    return [XRPL_TESTNET, XRPL_DEVNET, XAHAU_TESTNET]
   }
 
   get features(): StandardConnectFeature &
@@ -282,44 +288,30 @@ export class LocalWallet_TESTONLY implements XRPLBaseWallet {
   }
 
   #getWssEndpointFromNetwork(network: XRPLIdentifierString) {
-    switch (network) {
-      case 'xrpl:mainnet':
-      case 'xrpl:0':
-        throw new Error('Cannnot use mainnet with this Wallet')
-      case 'xrpl:testnet':
-      case 'xrpl:1':
-        return 'wss://s.altnet.rippletest.net:51233'
-      case 'xrpl:devnet':
-      case 'xrpl:2':
-        return 'wss://s.devnet.rippletest.net:51233'
-      case 'xrpl:xahau-mainnet':
-      case 'xrpl:21337':
-        throw new Error('Cannnot use xahau mainnet with this Wallet')
-      case 'xrpl:xahau-testnet':
-      case 'xrpl:21338':
-        return 'wss://xahau-test.net'
-      default:
-        if (this.#additionalNetworks[network]) return this.#additionalNetworks[network].server
-        throw new Error('Invalid network')
+    const chainId = convertNetworkToChainId(network)
+    if (!this.chains.includes(chainId)) {
+      throw new Error(`Unsupported network: ${network}`)
     }
+    if (this.#additionalNetworks[network]) return this.#additionalNetworks[network].server
+    const endpoint = getNetworkWssEndpoint(chainId)
+    if (!endpoint) {
+      throw new Error(`Unsupported network: ${network}`)
+    }
+    return endpoint
   }
 
   #getFaucetEndpointFromNetwork(network: XRPLIdentifierString) {
-    switch (network) {
-      case 'xrpl:mainnet':
-      case 'xrpl:0':
+    const chainId = convertNetworkToChainId(network)
+    switch (chainId) {
+      case XRPL_MAINNET:
         throw new Error('Cannnot use mainnet with this Wallet')
-      case 'xrpl:testnet':
-      case 'xrpl:1':
+      case XRPL_TESTNET:
         return 'https://faucet.altnet.rippletest.net/accounts'
-      case 'xrpl:devnet':
-      case 'xrpl:2':
+      case XRPL_DEVNET:
         return 'https://faucet.devnet.rippletest.net/accounts'
-      case 'xrpl:xahau-mainnet':
-      case 'xrpl:21337':
+      case XAHAU_MAINNET:
         throw new Error('Cannnot use xahau mainnet with this Wallet')
-      case 'xrpl:xahau-testnet':
-      case 'xrpl:21338':
+      case XAHAU_TESTNET:
         return 'https://xahau-test.net/accounts'
       default:
         if (this.#additionalNetworks[network]) return this.#additionalNetworks[network].faucet
