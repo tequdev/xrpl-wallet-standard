@@ -1,5 +1,6 @@
 'use client'
 import { CrossmarkWallet } from '@xrpl-wallet-adapter/crossmark'
+import { LedgerWallet } from '@xrpl-wallet-adapter/ledger'
 import { WalletConnectWallet } from '@xrpl-wallet-adapter/walletconnect'
 import { XamanWallet } from '@xrpl-wallet-adapter/xaman'
 import { WalletProvider as StandardWalletProvider } from '@xrpl-wallet-standard/react'
@@ -17,6 +18,7 @@ const additionalWallets = [
     },
     networks: ['xrpl:mainnet'],
   }),
+  new LedgerWallet(),
 ]
 
 export default function WalletProvider({

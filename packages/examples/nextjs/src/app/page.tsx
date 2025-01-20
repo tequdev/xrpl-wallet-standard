@@ -26,9 +26,8 @@ export default function Home() {
     if (selectedWallet && account) {
       const signedTransaction = await signTransaction(
         {
-          TransactionType: 'Invoke',
+          TransactionType: 'AccountSet',
           Account: account.address,
-          NetworkID: 21338,
         },
         XRPL_MAINNET,
       )

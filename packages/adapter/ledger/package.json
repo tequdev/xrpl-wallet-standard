@@ -1,0 +1,31 @@
+{
+  "name": "@xrpl-wallet-adapter/ledger",
+  "version": "0.0.0",
+  "description": "Ledger hardware wallet adapter for XRPL Wallet Standard",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "scripts": {
+    "build": "pkgroll"
+  },
+  "keywords": [],
+  "author": "tequ <git@tequ.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tequdev/xrpl-wallet-standard.git",
+    "directory": "packages/adapter/ledger"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@ledgerhq/hw-app-xrp": "^6.29.4",
+    "@ledgerhq/hw-transport": "^6.29.4",
+    "@ledgerhq/hw-transport-webhid": "^6.29.4",
+    "@ledgerhq/hw-transport-webusb": "^6.29.4",
+    "@xrpl-wallet-adapter/base": "workspace:*",
+    "@xrpl-wallet-standard/core": "workspace:*",
+    "xrpl": "^4.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

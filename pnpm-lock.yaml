@@ -58,6 +58,30 @@ importers:
         specifier: workspace:*
         version: link:../../core
 
+  packages/adapter/ledger:
+    dependencies:
+      '@ledgerhq/hw-app-xrp':
+        specifier: ^6.29.4
+        version: 6.29.4
+      '@ledgerhq/hw-transport':
+        specifier: ^6.29.4
+        version: 6.31.4
+      '@ledgerhq/hw-transport-webhid':
+        specifier: ^6.29.4
+        version: 6.30.0
+      '@ledgerhq/hw-transport-webusb':
+        specifier: ^6.29.4
+        version: 6.29.4
+      '@xrpl-wallet-adapter/base':
+        specifier: workspace:*
+        version: link:../base
+      '@xrpl-wallet-standard/core':
+        specifier: workspace:*
+        version: link:../../core
+      xrpl:
+        specifier: ^4.1.0
+        version: 4.1.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+
   packages/adapter/local_testonly:
     dependencies:
       '@wallet-standard/base':
@@ -163,6 +187,9 @@ importers:
       '@xrpl-wallet-adapter/crossmark':
         specifier: workspace:*
         version: link:../../adapter/crossmark
+      '@xrpl-wallet-adapter/ledger':
+        specifier: workspace:*
+        version: link:../../adapter/ledger
       '@xrpl-wallet-adapter/walletconnect':
         specifier: workspace:*
         version: link:../../adapter/walletconnect
@@ -825,6 +852,27 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@ledgerhq/devices@8.4.4':
+    resolution: {integrity: sha512-sz/ryhe/R687RHtevIE9RlKaV8kkKykUV4k29e7GAVwzHX1gqG+O75cu1NCJUHLbp3eABV5FdvZejqRUlLis9A==}
+
+  '@ledgerhq/errors@6.19.1':
+    resolution: {integrity: sha512-75yK7Nnit/Gp7gdrJAz0ipp31CCgncRp+evWt6QawQEtQKYEDfGo10QywgrrBBixeRxwnMy1DP6g2oCWRf1bjw==}
+
+  '@ledgerhq/hw-app-xrp@6.29.4':
+    resolution: {integrity: sha512-fEnqkwmEmcThGVtxLUQX9x4KB1E659Ke1dYuCZSXX4346+h3PCa7cfeKN/VRZNH8HQJgiYi53LqqYzwWXB5zbg==}
+
+  '@ledgerhq/hw-transport-webhid@6.30.0':
+    resolution: {integrity: sha512-HoTzjmYwO7+TVwK+GNbglRepUoDywBL6vjhKnhGqJSUPqAqJJyEXcnKnFDBMN7Phqm55O+YHDYfpcHGBNg5XlQ==}
+
+  '@ledgerhq/hw-transport-webusb@6.29.4':
+    resolution: {integrity: sha512-HoGF1LlBT9HEGBQy2XeCHrFdv/FEOZU0+J+yfKcgAQIAiASr2MLvdzwoJbUS8h6Gn+vc+/BjzBSO3JNn7Loqbg==}
+
+  '@ledgerhq/hw-transport@6.31.4':
+    resolution: {integrity: sha512-6c1ir/cXWJm5dCWdq55NPgCJ3UuKuuxRvf//Xs36Bq9BwkV2YaRQhZITAkads83l07NAdR16hkTWqqpwFMaI6A==}
+
+  '@ledgerhq/logs@6.12.0':
+    resolution: {integrity: sha512-ExDoj1QV5eC6TEbMdLUMMk9cfvNKhhv5gXol4SmULRVCx/3iyCPhJ74nsb3S0Vb+/f+XujBEj3vQn5+cwS0fNA==}
 
   '@lerna/create@8.1.7':
     resolution: {integrity: sha512-ch81CgU5pBNOiUCQx44F/ZtN4DxxJjUQtuytYRBFWJSHAJ+XPJtiC/yQ9zjr1I1yaUlmNYYblkopoOyziOdJ1w==}
@@ -2168,6 +2216,9 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
+  bip32-path@0.4.2:
+    resolution: {integrity: sha512-ZBMCELjJfcNMkz5bDuJ1WrYvjlhEF5k6mQ8vUr4N7MbVRsXei7ZOg8VhhwMfNiW68NWmLkgkc6WvTickrLGprQ==}
+
   bip32@2.0.6:
     resolution: {integrity: sha512-HpV5OMLLGTjSVblmrtYRfFFKuQB+GArM0+XP8HGWfJ5vxYBqo+DesvJwOdC2WJ3bCkZShGf0QIfoIpeomVzVdA==}
     engines: {node: '>=6.0.0'}
@@ -2807,6 +2858,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   esniff@2.0.1:
@@ -4604,6 +4656,10 @@ packages:
     resolution: {integrity: sha512-q0GAx+hj3UVcDbhXVjk7qeNfgUMehlElYJwiCuIBwqs/51GVTOwLr39Ht3eNsX5ow2xPRaC5mqHwcFDvLRm6cA==}
     engines: {node: '>= 16'}
 
+  ripple-binary-codec@2.2.0:
+    resolution: {integrity: sha512-93fvAW3oXux4NY5Xf79dUIOhud5DmyEcC5RrTYdl0BPaYOGXC/txCQl9FnwIVZGkVMtZFLcFwJfmH1zFgfRyKA==}
+    engines: {node: '>= 18'}
+
   ripple-keypairs@2.0.0:
     resolution: {integrity: sha512-b5rfL2EZiffmklqZk1W+dvSy97v3V/C7936WxCCgDynaGPp7GE6R2XO7EU9O2LlM/z95rj870IylYnOQs+1Rag==}
     engines: {node: '>= 16'}
@@ -5352,6 +5408,10 @@ packages:
     resolution: {integrity: sha512-VZm1lQWHQ6PheAAFGdH+ISXKvqB2hZDQ0w4ZcdAEtmqZQXtSIVQHOKPz95rEgGANbos7+XClxJ73++joPhA8Cw==}
     engines: {node: '>=18.0.0'}
 
+  xrpl@4.1.0:
+    resolution: {integrity: sha512-H/+BCEnFLyQOBUC6h4nMKg7I9AuxHe4kj9ZwQHX2zoL9n/ZOERc6B2U079pogI84zCbYdUWIn4DkoIYvjO/hpg==}
+    engines: {node: '>=18.0.0'}
+
   xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
@@ -5848,6 +5908,43 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@ledgerhq/devices@8.4.4':
+    dependencies:
+      '@ledgerhq/errors': 6.19.1
+      '@ledgerhq/logs': 6.12.0
+      rxjs: 7.8.1
+      semver: 7.6.3
+
+  '@ledgerhq/errors@6.19.1': {}
+
+  '@ledgerhq/hw-app-xrp@6.29.4':
+    dependencies:
+      '@ledgerhq/hw-transport': 6.31.4
+      bip32-path: 0.4.2
+
+  '@ledgerhq/hw-transport-webhid@6.30.0':
+    dependencies:
+      '@ledgerhq/devices': 8.4.4
+      '@ledgerhq/errors': 6.19.1
+      '@ledgerhq/hw-transport': 6.31.4
+      '@ledgerhq/logs': 6.12.0
+
+  '@ledgerhq/hw-transport-webusb@6.29.4':
+    dependencies:
+      '@ledgerhq/devices': 8.4.4
+      '@ledgerhq/errors': 6.19.1
+      '@ledgerhq/hw-transport': 6.31.4
+      '@ledgerhq/logs': 6.12.0
+
+  '@ledgerhq/hw-transport@6.31.4':
+    dependencies:
+      '@ledgerhq/devices': 8.4.4
+      '@ledgerhq/errors': 6.19.1
+      '@ledgerhq/logs': 6.12.0
+      events: 3.3.0
+
+  '@ledgerhq/logs@6.12.0': {}
 
   '@lerna/create@8.1.7(encoding@0.1.13)(typescript@5.5.3)':
     dependencies:
@@ -7568,6 +7665,8 @@ snapshots:
   bindings@1.5.0:
     dependencies:
       file-uri-to-path: 1.0.0
+
+  bip32-path@0.4.2: {}
 
   bip32@2.0.6:
     dependencies:
@@ -10370,6 +10469,15 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
+  ripple-binary-codec@2.2.0(bufferutil@4.0.8)(utf-8-validate@5.0.10):
+    dependencies:
+      '@xrplf/isomorphic': 1.0.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      bignumber.js: 9.1.2
+      ripple-address-codec: 5.0.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   ripple-keypairs@2.0.0(bufferutil@4.0.8)(utf-8-validate@5.0.10):
     dependencies:
       '@noble/curves': 1.4.2
@@ -11111,6 +11219,21 @@ snapshots:
       eventemitter3: 5.0.1
       ripple-address-codec: 5.0.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       ripple-binary-codec: 2.1.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      ripple-keypairs: 2.0.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  xrpl@4.1.0(bufferutil@4.0.8)(utf-8-validate@5.0.10):
+    dependencies:
+      '@scure/bip32': 1.4.0
+      '@scure/bip39': 1.3.0
+      '@xrplf/isomorphic': 1.0.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@xrplf/secret-numbers': 1.0.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      bignumber.js: 9.1.2
+      eventemitter3: 5.0.1
+      ripple-address-codec: 5.0.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      ripple-binary-codec: 2.2.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       ripple-keypairs: 2.0.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
     transitivePeerDependencies:
       - bufferutil

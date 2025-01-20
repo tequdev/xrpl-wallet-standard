@@ -188,6 +188,7 @@ export class CrossmarkWallet implements XRPLBaseWallet {
   }
 
   #signTransaction: XRPLSignTransactionMethod = async ({ tx_json, account, network }) => {
+    // Crossmark does not support changing the network when signing a transaction
     const { response } = await window.xrpl.crossmark.async.signAndWait(tx_json)
     return {
       signed_tx_blob: response.data.txBlob as any,
@@ -195,6 +196,7 @@ export class CrossmarkWallet implements XRPLBaseWallet {
   }
 
   #signAndSubmitTransaction: XRPLSignAndSubmitTransactionMethod = async ({ tx_json, account, network }) => {
+    // Crossmark does not support changing the network when signing a transaction
     const { response } = await window.xrpl.crossmark.async.signAndSubmitAndWait(tx_json)
     return {
       tx_json: response.data.resp.result,

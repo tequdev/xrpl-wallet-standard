@@ -14,6 +14,7 @@
     "next": "14.2.5",
     "@xrpl-wallet-standard/app": "workspace:*",
     "@xrpl-wallet-standard/react": "workspace:*",
+    "@xrpl-wallet-adapter/ledger": "workspace:*",
     "@xrpl-wallet-adapter/crossmark": "workspace:*",
     "@xrpl-wallet-adapter/walletconnect": "workspace:*",
     "@xrpl-wallet-adapter/xaman": "workspace:*"
