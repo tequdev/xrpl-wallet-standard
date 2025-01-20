@@ -1,6 +1,6 @@
 {
   "name": "@xrpl-wallet-adapter/ledger",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Ledger hardware wallet adapter for XRPL Wallet Standard",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
