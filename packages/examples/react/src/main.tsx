@@ -21,6 +21,26 @@ const additionalWallets = [
       icons: ['https://avatars.githubusercontent.com/u/37784886'],
     },
     networks: ['xrpl:mainnet'],
+    desktopWallets: [
+      {
+        id: '19177a98252e07ddfc9af2083ba8e07ef627cb6103467ffebb3f8f4205fd7927',
+        name: 'Ledger Live',
+        links: {
+          native: 'ledgerlive://',
+          universal: 'https://www.ledger.com/ledger-live',
+        },
+      },
+    ],
+    mobileWallets: [
+      {
+        id: '37a686ab6223cd42e2886ed6e5477fce100a4fb565dcd57ed4f81f7c12e93053',
+        name: 'Bifrost Wallet',
+        links: {
+          native: 'bifrostwallet://',
+          universal: 'https://bifrostwallet.com',
+        },
+      },
+    ],
   }),
   new LocalWallet_TESTONLY(),
   new MetaMaskWallet(),

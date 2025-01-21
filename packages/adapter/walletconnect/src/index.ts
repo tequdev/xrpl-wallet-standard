@@ -1,4 +1,5 @@
 import { WalletConnectModal } from '@walletconnect/modal'
+import type { WalletConnectModalConfig } from '@walletconnect/modal'
 import type { SessionTypes } from '@walletconnect/types'
 import UniversalProvider from '@walletconnect/universal-provider'
 import { getSdkError } from '@walletconnect/utils'
@@ -34,6 +35,8 @@ interface WalletConnectWalletProps {
     icons: string[]
   }
   networks: XRPLIdentifierString[]
+  desktopWallets: WalletConnectModalConfig['desktopWallets']
+  mobileWallets: WalletConnectModalConfig['mobileWallets']
 }
 
 export class WalletConnectWallet implements XRPLBaseWallet {
@@ -100,7 +103,7 @@ export class WalletConnectWallet implements XRPLBaseWallet {
     return this.#accounts
   }
 
-  constructor({ projectId, metadata, networks }: WalletConnectWalletProps) {
+  constructor({ projectId, metadata, networks, desktopWallets, mobileWallets }: WalletConnectWalletProps) {
     UniversalProvider.init({
       // logger: "info",
       projectId,
@@ -124,6 +127,9 @@ export class WalletConnectWallet implements XRPLBaseWallet {
     this.#modal = new WalletConnectModal({
       projectId,
       chains: this.#chains,
+      explorerExcludedWalletIds: 'ALL',
+      desktopWallets,
+      mobileWallets,
     })
 
     if (new.target === WalletConnectWallet) {
