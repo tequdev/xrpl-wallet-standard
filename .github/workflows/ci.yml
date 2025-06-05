@@ -4,6 +4,10 @@ on:
   push:
   pull_request:
 
+env:
+  PNPM_VERSION: 10.11.1
+  NODE_VERSION: 20
+
 jobs:
   quality:
     runs-on: ubuntu-latest
@@ -11,15 +15,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
+      - name: Cache for Turbo
+        uses: rharkor/caching-for-turbo@v1.8
+      
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: ${{ env.PNPM_VERSION }}
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
       
       - name: Install dependencies
@@ -40,15 +47,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
+      - name: Cache for Turbo
+        uses: rharkor/caching-for-turbo@v1.8
+      
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: ${{ env.PNPM_VERSION }}
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
       
       - name: Install dependencies
