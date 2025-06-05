@@ -12,6 +12,7 @@
   "dependencies": {
     "@xrpl-wallet-adapter/crossmark": "workspace:*",
     "@xrpl-wallet-adapter/local-testonly": "workspace:*",
+    "@xrpl-wallet-adapter/metamask": "workspace:*",
     "@xrpl-wallet-adapter/walletconnect": "workspace:*",
     "@xrpl-wallet-adapter/xaman": "workspace:*",
     "@xrpl-wallet-standard/app": "workspace:*",

@@ -17,6 +17,8 @@ const additionalWallets = [
       icons: ['https://avatars.githubusercontent.com/u/37784886'],
     },
     networks: ['xrpl:mainnet'],
+    desktopWallets: [],
+    mobileWallets: [],
   }),
   new LedgerWallet(),
 ]
